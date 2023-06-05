@@ -1,4 +1,9 @@
 <resources>
 	<string name="app_name">Weather Forecast</string>
 	<string name="weather_forecast_label">Weather Forecast</string>
+	<string name="celsius_text">Celsius</string>
+	<string name="fahrenheit_text">Fahrenheit</string>
+	<string name="temperature_text">Temperature</string>
+	<string name="humidity_text">Humidity</string>
+	<string name="city_hint_text">City</string>
 </resources>
