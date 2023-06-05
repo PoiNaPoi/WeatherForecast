@@ -1,6 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
+
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<EditText
+				android:id="@+id/textSearch"
+				android:layout_width="@dimen/spacing_empty"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/spacing_xxxxx_large"
+				android:layout_marginTop="@dimen/spacing_xxxxx_large"
+				android:autofillHints="postalAddress"
+				android:hint="@string/city_hint_text"
+				app:layout_constraintEnd_toStartOf="@id/searchIcon"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<ImageView
+				android:id="@+id/searchIcon"
+				android:layout_width="@dimen/spacing_x_large"
+				android:layout_height="@dimen/spacing_x_large"
+				android:layout_marginStart="@dimen/spacing_x_small"
+				android:layout_marginEnd="@dimen/spacing_xxxxx_large"
+				app:layout_constraintBottom_toBottomOf="@id/textSearch"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/textSearch"
+				app:layout_constraintTop_toTopOf="@id/textSearch"
+				app:srcCompat="@drawable/ic_search" />
+
+			<androidx.appcompat.widget.SwitchCompat
+				android:id="@+id/tempSwitch"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_xx_large"
+				android:thumb="@drawable/switch_thumb_button"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/textSearch"
+				app:track="@drawable/switch_track_button" />
+
+			<TextView
+				android:id="@+id/celsiusSwitchText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_xx_large"
+				android:layout_marginEnd="@dimen/spacing_normal"
+				android:text="@string/celsius_text"
+				app:layout_constrainedWidth="true"
+				app:layout_constraintBottom_toBottomOf="@id/tempSwitch"
+				app:layout_constraintEnd_toStartOf="@id/tempSwitch"
+				app:layout_constraintTop_toBottomOf="@id/textSearch" />
+
+			<TextView
+				android:id="@+id/fahrenheitSwitchText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/spacing_normal"
+				android:layout_marginTop="@dimen/spacing_xx_large"
+				android:text="@string/fahrenheit_text"
+				app:layout_constrainedWidth="true"
+				app:layout_constraintBottom_toBottomOf="@id/tempSwitch"
+				app:layout_constraintStart_toEndOf="@id/tempSwitch"
+				app:layout_constraintTop_toBottomOf="@id/textSearch" />
+
+			<TextView
+				android:id="@+id/CityDisplay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_xxxx_large"
+				android:textSize="36sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/celsiusSwitchText"
+				tools:text="Bangkok" />
+
+			<TextView
+				android:id="@+id/temperatureTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_xxxx_large"
+				android:text="@string/temperature_text"
+				android:textSize="36sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/CityDisplay" />
+
+			<TextView
+				android:id="@+id/temperatureDisplay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_x_small"
+				android:textSize="28sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/temperatureTitle"
+				tools:text="100 F" />
+
+			<TextView
+				android:id="@+id/humidityTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_xxxx_large"
+				android:text="@string/humidity_text"
+				android:textSize="36sp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/temperatureDisplay" />
+
+			<TextView
+				android:id="@+id/humidityDisplay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_x_small"
+				android:layout_marginBottom="@dimen/spacing_xxxx_large"
+				android:textSize="28sp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/humidityTitle"
+				tools:text="100 %" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
