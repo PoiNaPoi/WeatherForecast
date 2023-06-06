@@ -22,6 +22,10 @@ class WholeDayForecastFragment : BaseFragmentBinding<FragmentWholeDayForecastBin
 
 	override fun setup() {
 		setUpAdapter()
+		viewModel.getWholeDayForecast(
+			cityName = viewModel.cityName,
+			temperatureUnit = viewModel.temperatureUnit
+		)
 	}
 
 	override fun initData() {
@@ -43,8 +47,16 @@ class WholeDayForecastFragment : BaseFragmentBinding<FragmentWholeDayForecastBin
 		}
 	}
 
+	override fun observable() {
+		super.observable()
+
+		viewModel.wholeDayForeCast.observe(this) { wholeDayDataList ->
+			adapter.temperatureUnit = viewModel.temperatureUnit
+			adapter.submitList(wholeDayDataList)
+		}
+	}
+
 	private fun setUpAdapter() {
 		binding.wholeDayForecastRecyclerView.adapter = adapter
-		adapter.temperatureUnit = viewModel.temperatureUnit
 	}
 }

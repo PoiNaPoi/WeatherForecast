@@ -34,7 +34,6 @@ class ForecastDetailViewModel @Inject constructor(
 	var isGetToDayDateSuccess: Boolean = false
 	var temperatureUnit: ForecastUnitTypeRequestEnum = ForecastUnitTypeRequestEnum.METRIC
 	var inputCityName: String = ""
-//	var cityName: String = ""
 
 	fun getWeatherDetail(
 		cityName: String,
@@ -76,7 +75,6 @@ class ForecastDetailViewModel @Inject constructor(
 	}
 
 	private fun getToDayForecastSuccess(toDayData: ToDayForecastResponseModel) {
-//		cityName = toDayData.name
 		isGetToDayDateSuccess = true
 		_toDayForeCast.postValue(toDayData)
 	}

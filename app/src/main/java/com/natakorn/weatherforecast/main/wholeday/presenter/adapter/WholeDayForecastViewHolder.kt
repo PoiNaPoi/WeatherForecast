@@ -7,7 +7,6 @@ import com.natakorn.weatherforecast.R
 import com.natakorn.weatherforecast.databinding.ItemWholeDayForecastBinding
 import com.natakorn.weatherforecast.main.datasource.model.WholeDayWeatherData
 import com.natakorn.weatherforecast.main.datasource.model.enum.ForecastUnitTypeRequestEnum
-import com.natakorn.weatherforecast.main.forecast.presenter.ForecastDetailFragment
 
 class WholeDayForecastViewHolder constructor(
 	private val binding: ItemWholeDayForecastBinding
@@ -33,23 +32,23 @@ class WholeDayForecastViewHolder constructor(
 					.toString().plus(dayForecastData.dateTime)
 
 				itemWholeDayForecastTitle.text = getText(R.string.whole_day_weather_title_text)
-					.toString().plus(dayForecastData.weather.weatherTitle)
+					.toString().plus(dayForecastData.weather[0].weatherTitle)
 
 				itemWholeDayForecastDescription.text =
 					getText(R.string.whole_day_description_title_text)
-						.toString().plus(dayForecastData.weather.weatherDescription)
+						.toString().plus(dayForecastData.weather[0].weatherDescription)
 
 				val temperatureString = when (temperatureUnit) {
 					ForecastUnitTypeRequestEnum.METRIC -> {
 						getText(R.string.whole_day_temperature_title_text).toString()
 							.plus(dayForecastData.weatherData.temp)
-							.plus(ForecastDetailFragment.TEMPERATURE_CELSIUS_UNIT)
+							.plus(TEMPERATURE_CELSIUS_UNIT)
 					}
 
 					ForecastUnitTypeRequestEnum.IMPERIAL -> {
 						getText(R.string.whole_day_temperature_title_text).toString()
 							.plus(dayForecastData.weatherData.temp)
-							.plus(ForecastDetailFragment.TEMPERATURE_FAHRENHEIT_UNIT)
+							.plus(TEMPERATURE_FAHRENHEIT_UNIT)
 					}
 				}
 
