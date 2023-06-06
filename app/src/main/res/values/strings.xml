@@ -6,4 +6,7 @@
 	<string name="temperature_text">Temperature</string>
 	<string name="humidity_text">Humidity</string>
 	<string name="city_hint_text">City</string>
+	<string name="other_error_text">Some Thing Went Wrong !!</string>
+	<string name="welcome_message_text">Welcome To My Weather Forecast App !!</string>
+	<string name="remind_fill_city_text">Please Fill The City Name !!</string>
 </resources>
