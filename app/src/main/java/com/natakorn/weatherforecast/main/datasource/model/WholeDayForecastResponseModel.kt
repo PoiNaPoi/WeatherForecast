@@ -11,7 +11,7 @@ data class WholeDayForecastResponseModel(
 
 data class WholeDayWeatherData(
 	@SerializedName("main") val weatherData: WeatherData = WeatherData(),
-	@SerializedName("weather") val weather: WeatherForecastData = WeatherForecastData(),
+	@SerializedName("weather") val weather: List<WeatherForecastData> = listOf(),
 	@SerializedName("dt_txt") val dateTime: String = ""
 )
 
