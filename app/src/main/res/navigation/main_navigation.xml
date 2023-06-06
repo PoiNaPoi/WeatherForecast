@@ -3,13 +3,37 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/weatherForecastNavigation"
-	app:startDestination="@id/weatherForecastFragment">
+	app:startDestination="@id/forecastDetailFragment">
 
 	<fragment
-		android:id="@+id/weatherForecastFragment"
+		android:id="@+id/forecastDetailFragment"
 		android:name="com.natakorn.weatherforecast.main.forecast.presenter.ForecastDetailFragment"
 		android:label="@string/weather_forecast_label"
 		tools:layout="@layout/fragment_forecast_detail">
+
+		<action
+			android:id="@+id/toUChallengeMissionStampFragment"
+			app:destination="@id/wholeDayForecastFragment"
+			app:enterAnim="@anim/move_in_right"
+			app:exitAnim="@anim/move_out_left"
+			app:popEnterAnim="@anim/move_in_left"
+			app:popExitAnim="@anim/move_out_right" />
+
+	</fragment>
+
+	<fragment
+		android:id="@+id/wholeDayForecastFragment"
+		android:name="com.natakorn.weatherforecast.main.wholeday.presenter.WholeDayForecastFragment"
+		android:label="@string/weather_forecast_label"
+		tools:layout="@layout/fragment_whole_day_forecast">
+
+		<argument
+			android:name="temperatureUnit"
+			app:argType="com.natakorn.weatherforecast.main.datasource.model.enum.ForecastUnitTypeRequestEnum" />
+
+		<argument
+			android:name="cityName"
+			app:argType="string" />
 
 	</fragment>
 

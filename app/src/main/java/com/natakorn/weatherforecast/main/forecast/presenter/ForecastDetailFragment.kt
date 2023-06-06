@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.natakorn.weatherforecast.R
 import com.natakorn.weatherforecast.core.base.binding.BaseFragmentBinding
 import com.natakorn.weatherforecast.core.extension.gone
@@ -30,7 +31,7 @@ class ForecastDetailFragment : BaseFragmentBinding<FragmentForecastDetailBinding
 		super.initListener()
 
 		binding.apply {
-			searchIcon.setOnClickWithDebounce() {
+			searchIcon.setOnClickWithDebounce {
 				viewModel.getWeatherDetail(
 					cityName = viewModel.inputCityName,
 					unit = viewModel.temperatureUnit
@@ -39,6 +40,10 @@ class ForecastDetailFragment : BaseFragmentBinding<FragmentForecastDetailBinding
 
 			tempSwitch.setOnCheckedChangeListener { _, isFahrenheit ->
 				viewModel.switchStateChange(isFahrenheit = isFahrenheit)
+			}
+
+			seeWholeDayForecastButton.setOnClickWithDebounce {
+				navigateToWholeDayForecastFragment()
 			}
 
 			textSearch.addTextChangedListener(object :
@@ -92,6 +97,7 @@ class ForecastDetailFragment : BaseFragmentBinding<FragmentForecastDetailBinding
 			temperatureDisplay.visible()
 			humidityTitle.visible()
 			humidityDisplay.visible()
+			seeWholeDayForecastButton.visible()
 
 			cityDisplay.text = toDayData.name
 
@@ -124,6 +130,7 @@ class ForecastDetailFragment : BaseFragmentBinding<FragmentForecastDetailBinding
 			temperatureDisplay.gone()
 			humidityTitle.gone()
 			humidityDisplay.gone()
+			seeWholeDayForecastButton.gone()
 		}
 	}
 
@@ -133,6 +140,14 @@ class ForecastDetailFragment : BaseFragmentBinding<FragmentForecastDetailBinding
 		context.let {
 			binding.cityDisplay.text = getText(R.string.welcome_message_text)
 		}
+	}
+
+	private fun navigateToWholeDayForecastFragment() {
+		val directions = ForecastDetailFragmentDirections.toUChallengeMissionStampFragment(
+			temperatureUnit = viewModel.temperatureUnit,
+			cityName = viewModel.toDayForeCast.value?.name ?: viewModel.inputCityName
+		)
+		findNavController().navigate(directions)
 	}
 
 	companion object {

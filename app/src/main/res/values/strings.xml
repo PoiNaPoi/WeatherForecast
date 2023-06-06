@@ -9,4 +9,11 @@
 	<string name="other_error_text">Some Thing Went Wrong !!</string>
 	<string name="welcome_message_text">Welcome To My Weather Forecast App !!</string>
 	<string name="remind_fill_city_text">Please Fill The City Name !!</string>
+	<string name="whole_day_forecast_title_text">Day Forecast</string>
+	<string name="whole_day_forecast_button_text">See Day Forecast</string>
+	<string name="whole_day_date_title_text">Date: </string>
+	<string name="whole_day_weather_title_text">Weather: </string>
+	<string name="whole_day_description_title_text">Description: </string>
+	<string name="whole_day_temperature_title_text">Temperature: </string>
+	<string name="whole_day_humidity_title_text">Humidity: </string>
 </resources>
