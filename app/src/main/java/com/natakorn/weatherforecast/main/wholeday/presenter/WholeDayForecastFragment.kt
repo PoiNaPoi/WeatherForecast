@@ -3,8 +3,10 @@ package com.natakorn.weatherforecast.main.wholeday.presenter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.natakorn.weatherforecast.R
 import com.natakorn.weatherforecast.core.base.binding.BaseFragmentBinding
 import com.natakorn.weatherforecast.core.extension.setOnClickWithDebounce
+import com.natakorn.weatherforecast.core.extension.visible
 import com.natakorn.weatherforecast.databinding.FragmentWholeDayForecastBinding
 import com.natakorn.weatherforecast.main.wholeday.presenter.adapter.WholeDayForecastAdapter
 import javax.inject.Inject
@@ -54,9 +56,24 @@ class WholeDayForecastFragment : BaseFragmentBinding<FragmentWholeDayForecastBin
 			adapter.temperatureUnit = viewModel.temperatureUnit
 			adapter.submitList(wholeDayDataList)
 		}
+
+		viewModel.otherError.observe(this) { throwable ->
+			displayErrorMessage(
+				throwable = throwable,
+				message = getString(R.string.other_error_text)
+			)
+		}
 	}
 
 	private fun setUpAdapter() {
 		binding.wholeDayForecastRecyclerView.adapter = adapter
+	}
+
+	private fun displayErrorMessage(
+		throwable: Throwable? = null,
+		message: String = ""
+	) {
+		binding.wholeDayForecastErrorMessage.visible()
+		binding.wholeDayForecastErrorMessage.text = throwable?.message ?: message
 	}
 }

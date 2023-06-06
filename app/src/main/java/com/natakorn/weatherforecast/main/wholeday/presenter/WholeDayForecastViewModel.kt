@@ -22,6 +22,9 @@ class WholeDayForecastViewModel @Inject constructor(
 	private val _wholeDayForeCast = MutableLiveData<List<WholeDayWeatherData>>()
 	val wholeDayForeCast: LiveData<List<WholeDayWeatherData>> = _wholeDayForeCast
 
+	private val _otherError = MutableLiveData<Throwable>()
+	val otherError: LiveData<Throwable> = _otherError
+
 	var cityName: String = ""
 	var temperatureUnit: ForecastUnitTypeRequestEnum = ForecastUnitTypeRequestEnum.METRIC
 
@@ -38,13 +41,17 @@ class WholeDayForecastViewModel @Inject constructor(
 			.runOn(viewModelScope) { result ->
 				result.onSuccess { wholeDayData ->
 					getWholeDayForecastSuccess(wholeDayData = wholeDayData)
-				}.onFailure {
-
+				}.onFailure { throwable ->
+					getWholeDayForecastError(throwable = throwable)
 				}
 			}
 	}
 
 	private fun getWholeDayForecastSuccess(wholeDayData: WholeDayForecastResponseModel) {
 		_wholeDayForeCast.postValue(wholeDayData.wholeDayWeatherData)
+	}
+
+	private fun getWholeDayForecastError(throwable: Throwable) {
+		_otherError.postValue(throwable)
 	}
 }
