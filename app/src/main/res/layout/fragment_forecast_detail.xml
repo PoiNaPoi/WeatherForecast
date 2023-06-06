@@ -21,6 +21,7 @@
 				android:layout_marginTop="@dimen/spacing_xxxxx_large"
 				android:autofillHints="postalAddress"
 				android:hint="@string/city_hint_text"
+				android:singleLine="true"
 				app:layout_constraintEnd_toStartOf="@id/searchIcon"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent" />
@@ -73,10 +74,12 @@
 				app:layout_constraintTop_toBottomOf="@id/textSearch" />
 
 			<TextView
-				android:id="@+id/CityDisplay"
+				android:id="@+id/cityDisplay"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/spacing_xxxx_large"
+				android:paddingHorizontal="@dimen/spacing_xxxxx_large"
+				android:textAlignment="center"
 				android:textSize="36sp"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +95,7 @@
 				android:textSize="36sp"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/CityDisplay" />
+				app:layout_constraintTop_toBottomOf="@id/cityDisplay" />
 
 			<TextView
 				android:id="@+id/temperatureDisplay"

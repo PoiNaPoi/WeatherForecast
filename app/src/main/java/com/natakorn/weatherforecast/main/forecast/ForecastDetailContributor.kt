@@ -1,5 +1,6 @@
 package com.natakorn.weatherforecast.main.forecast
 
+import com.natakorn.weatherforecast.main.datasource.WeatherForecastDataSourceModule
 import com.natakorn.weatherforecast.main.forecast.presenter.ForecastDetailFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -8,7 +9,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class ForecastDetailContributor {
 	@ContributesAndroidInjector(
 		modules = [
-			ForecastDetailModule::class
+			ForecastDetailModule::class,
+			WeatherForecastDataSourceModule::class
 		]
 	)
 	abstract fun contributeForecastDetailFragment(): ForecastDetailFragment
